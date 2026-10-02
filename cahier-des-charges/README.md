@@ -4,7 +4,7 @@
 
 - **Nom du projet :** TeamBoard
 - **Membres de l'équipe :** Triponez Tess, Saylan Kerem
-- **Cadre :** Projet libre — Cours de Programmation Serveur 2 (ProgServ2), HEIG-VD.
+- **Cadre :** Projet libre - Cours de Programmation Serveur 2 (ProgServ2), HEIG-VD.
 
 ---
 
