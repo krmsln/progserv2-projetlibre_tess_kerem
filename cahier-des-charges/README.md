@@ -398,7 +398,6 @@ Les mesures mises en place comprennent notamment :
 - protection contre les attaques XSS ;
 - validation des données saisies par l'utilisateur côté client et côté serveur ;
 - traitement et nettoyage appropriés des entrées utilisateur ;
-- traitement et nettoyage appropriés des entrées utilisateur ;
 - stockage sécurisé des mots de passe ;
 - contrôle des droits d'accès selon le rôle de l'utilisateur ;
 - protection des pages privées par authentification.
