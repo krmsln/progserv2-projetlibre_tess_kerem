@@ -144,7 +144,7 @@ L'utilisateur peut se déconnecter à tout moment.
 
 L'utilisateur peut consulter et modifier les informations de son profil.
 
-##4.5 Gestion des sessions et des autorisations
+## 4.5 Gestion des sessions et des autorisations
 
 Après connexion, une session utilisateur est maintenue afin d'identifier l'utilisateur sur l'ensemble des pages privées de l'application.
 
