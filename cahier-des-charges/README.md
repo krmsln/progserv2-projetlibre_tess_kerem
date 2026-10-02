@@ -93,7 +93,7 @@ Un projet contient notamment :
 - un nom
 - une description
 - une date de création
-- un statut
+- un statut: à venir, en cours, terminé
 
 Le manager peut :
 
@@ -120,8 +120,8 @@ Une tâche contient notamment :
 - une description
 - une date de création
 - une date d'échéance
-- une priorité
-- un statut
+- une priorité: Faible, Urgente
+- un statut: À faire, En cours, Terminée
 - un projet associé
 - un utilisateur assigné
 
@@ -154,12 +154,6 @@ Le manager peut modifier les informations d'une tâche.
 
 Le collaborateur peut modifier le statut des tâches qui lui sont assignées.
 
-Les statuts disponibles sont :
-
-- À faire
-- En cours
-- Terminée
-
 ### Suppression
 
 Le manager peut supprimer une tâche.
@@ -176,7 +170,7 @@ Le tableau de bord permet notamment de visualiser :
 - les tâches à faire
 - les tâches en cours
 - les tâches terminées
-- les tâches arrivant prochainement à échéance
+- Les tâches dont l'échéance est dans les 7 prochains jours
 
 Le contenu affiché dépend des droits de l'utilisateur connecté.
 
@@ -342,7 +336,7 @@ Les informations de connexion à la base de données sont stockées dans un fich
 
 L'application est déployée sur Internet à l'aide d'Infomaniak et utilise une base de données MySQL/MariaDB dédiée.
 
-### Collaboration
+### Organisation du développement
 
 Le développement est réalisé en équipe à l'aide de Git et GitHub.
 
