@@ -320,7 +320,9 @@ Présentation des informations du projet et des tâches qui lui sont associées.
 
 Liste des tâches auxquelles l'utilisateur a accès.
 
-Une tâche peut être développée directement dans la liste afin d'afficher ses informations détaillées.
+### Détail d'une tâche 
+
+Informations détaillées d'une tâche.
 
 ### Gestion du profil
 
