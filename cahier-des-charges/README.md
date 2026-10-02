@@ -8,153 +8,188 @@
 
 ---
 
-## 2. Description du projet
+# 2. Présentation du projet
+
+## 2.1 Description
 
 TeamBoard est une application web de gestion de projets et de tâches destinée aux petites équipes.
 
-L’objectif de la plateforme est de centraliser les projets, de créer et d’assigner des tâches aux collaborateurs, ainsi que de permettre un suivi clair de leur état d’avancement.
+L'application permet de centraliser les projets, de créer et d'assigner des tâches aux collaborateurs et de suivre leur état d'avancement.
 
-L’application permet aux collaborateurs de consulter les projets auxquels ils participent et de suivre les tâches qui leur sont attribuées. Les managers disposent de droits supplémentaires leur permettant de gérer les projets et les tâches de leur équipe.
+Les collaborateurs peuvent consulter les projets auxquels ils ont accès ainsi que les tâches qui leur sont assignées. Les managers disposent de droits supplémentaires leur permettant de gérer les projets et les tâches de leur équipe.
 
-**Spécificité du projet :**
+## 2.2 Objectif
 
-TeamBoard se concentre sur une gestion simple et claire des projets et des tâches. L'objectif est de proposer une interface permettant de visualiser rapidement les tâches, leurs responsables, leurs échéances et leur état d'avancement.
+L'objectif de TeamBoard est de proposer une interface simple et claire permettant de visualiser rapidement :
+
+- les projets accessibles ;
+- les tâches ;
+- les personnes responsables des tâches ;
+- les échéances ;
+- les priorités ;
+- l'état d'avancement.
+
+L'application doit permettre aux petites équipes de centraliser leur suivi de projets et de tâches dans une même interface.
 
 ---
 
-# 3. Fonctionnalités principales
+# 3. Utilisateurs et autorisations
 
-## A. Gestion des utilisateurs et de l'authentification
+L'application possède deux rôles : **manager** et **collaborateur**.
 
-### Création de compte
+## 3.1 Manager
 
-L'utilisateur peut créer un compte à l'aide de :
+Le manager dispose des droits de gestion sur les projets et les tâches.
 
-- son nom
-- son adresse e-mail
-- son mot de passe
+Il peut :
+
+- consulter les projets et les tâches ;
+- créer, modifier et supprimer des projets ;
+- créer, modifier et supprimer des tâches ;
+- assigner ou réassigner des tâches aux collaborateurs ;
+- modifier le statut des tâches.
+
+## 3.2 Collaborateur
+
+Le collaborateur dispose de droits limités.
+
+Il peut :
+
+- consulter les projets auxquels il a accès ;
+- consulter les tâches qui lui sont assignées ;
+- consulter les informations détaillées de ses tâches ;
+- modifier le statut des tâches qui lui sont assignées.
+
+### Règle d'accès aux projets
+
+Un collaborateur peut accéder à un projet uniquement lorsqu'au moins une tâche de ce projet lui est assignée.
+
+Un projet peut exister sans contenir de tâche et reste alors uniquement accessible au manager.
+
+Les droits d'accès sont contrôlés en fonction du rôle de l'utilisateur connecté.
+
+---
+
+# 4. Gestion des utilisateurs et de l'authentification
+
+## 4.1 Création de compte
+
+Un utilisateur peut créer un compte à l'aide des informations suivantes :
+
+- nom ;
+- adresse e-mail ;
+- mot de passe.
+
+L'adresse e-mail doit être associée à un seul compte.
 
 Les mots de passe sont stockés de manière sécurisée dans la base de données.
 
-### Connexion
+## 4.2 Connexion
 
 L'utilisateur peut se connecter à son compte à l'aide de son adresse e-mail et de son mot de passe.
 
-### Déconnexion
+Les pages privées sont accessibles uniquement aux utilisateurs authentifiés.
+
+## 4.3 Déconnexion
 
 L'utilisateur peut se déconnecter à tout moment.
 
-### Gestion du profil
+## 4.4 Gestion du profil
 
 L'utilisateur peut consulter et modifier les informations de son profil.
 
 ---
 
-# 4. Rôles et autorisations
-
-L'application possède deux rôles distincts.
-
-## A. Manager
-
-Le manager possède des droits de gestion sur les projets et les tâches.
-
-Il peut :
-
-- créer des projets
-- consulter les projets
-- modifier les projets
-- supprimer les projets
-- créer des tâches
-- consulter les tâches
-- modifier les tâches
-- supprimer les tâches
-- assigner des tâches aux collaborateurs.
-
-## B. Collaborateur
-
-Le collaborateur peut :
-
-- avoir accès à un projet uniquement s’il possède au moins une tâche qui lui est assignée dans ce projet
-- consulter les projets auxquels il a accès
-- consulter les tâches qui lui sont assignées
-- consulter le détail de ces tâches
-- modifier le statut des tâches qui lui sont assignées
-
-Les droits d'accès sont contrôlés selon le rôle de l'utilisateur connecté.
-
----
-
 # 5. Gestion des projets
 
-Un projet permet de regrouper plusieurs tâches.
+Un projet permet de regrouper des tâches, mais peut également exister sans aucune tâche.
+
+## 5.1 Informations d'un projet
 
 Un projet contient notamment :
 
-- un nom
-- une description
-- une date de création
-- un statut: à venir, en cours, terminé
+- un nom ;
+- une description ;
+- une date de création ;
+- un statut.
 
-Le manager peut :
+Les statuts disponibles sont :
 
-- créer un projet
-- consulter un projet
-- modifier un projet
-- supprimer un projet
+- **À venir**
+- **En cours**
+- **Terminé**
 
-Le collaborateur peut :
+## 5.2 Gestion
 
-- Consulter les projets auxquels il a au minimum une tâche assignée.
+Les opérations disponibles sont définies par le rôle de l'utilisateur :
 
-Un projet peut contenir plusieurs tâches.
+- le manager peut créer, consulter, modifier et supprimer des projets ;
+- le collaborateur peut consulter les projets auxquels il a accès.
+
+Un projet peut contenir plusieurs tâches ou aucune tâche.
 
 ---
 
 # 6. Gestion des tâches
 
-Une tâche est associée à un projet et peut être assignée à un collaborateur.
+Une tâche appartient à un projet et peut être assignée à un collaborateur.
+
+## 6.1 Informations d'une tâche
 
 Une tâche contient notamment :
 
-- un titre
-- une description
-- une date de création
-- une date d'échéance
-- une priorité: Faible, Urgente
-- un statut: À faire, En cours, Terminée
-- un projet associé
-- un utilisateur assigné
+- un titre ;
+- une description ;
+- une date de création ;
+- une date d'échéance ;
+- une priorité ;
+- un statut ;
+- un projet associé ;
+- un utilisateur assigné, le cas échéant.
 
-### Création
+### Priorités disponibles
 
-Le manager peut créer une tâche.
+- **Faible**
+- **Urgente**
 
-### Assignation
+### Statuts disponibles
 
-Le manager peut assigner une tâche à un collaborateur.
+- **À faire**
+- **En cours**
+- **Terminée**
 
-### Consultation
+## 6.2 Création et assignation
+
+Le manager peut créer une tâche et l'associer à un projet.
+
+L'assignation d'une tâche à un collaborateur est facultative lors de sa création.
+
+Le manager peut assigner ou réassigner une tâche à un collaborateur ultérieurement.
+
+Lorsqu'une tâche est assignée à un collaborateur, celui-ci reçoit un e-mail l'informant de cette nouvelle tâche.
+
+## 6.3 Consultation
 
 Les utilisateurs peuvent consulter les tâches auxquelles ils ont accès.
 
-La page de détail d'une tâche affiche notamment :
+Dans la liste des tâches, une tâche peut être développée afin d'afficher ses informations détaillées, notamment :
 
-- son titre
-- le projet associé
-- sa date de création
-- sa date d'échéance
-- sa description
-- l'utilisateur assigné
-- sa priorité
-- son statut
+- le titre ;
+- le projet associé ;
+- la date de création ;
+- la date d'échéance ;
+- la description ;
+- l'utilisateur assigné, le cas échéant ;
+- la priorité ;
+- le statut.
 
-### Modification
+## 6.4 Modification
 
-Le manager peut modifier les informations d'une tâche.
+Le manager peut modifier les informations d'une tâche, notamment son titre, sa description, sa date d'échéance, sa priorité, son statut et son utilisateur assigné.
 
-Le collaborateur peut modifier le statut des tâches qui lui sont assignées.
+Le collaborateur peut uniquement modifier le statut des tâches qui lui sont assignées.
 
-### Suppression
+## 6.5 Suppression
 
 Le manager peut supprimer une tâche.
 
@@ -166,95 +201,154 @@ Une fois connecté, l'utilisateur dispose d'un tableau de bord adapté à son r�
 
 Le tableau de bord permet notamment de visualiser :
 
-- les projets accessibles
-- les tâches à faire
-- les tâches en cours
-- les tâches terminées
-- Les tâches dont l'échéance est dans les 7 prochains jours
+- les projets accessibles ;
+- les tâches à faire ;
+- les tâches en cours ;
+- les tâches terminées ;
+- les tâches dont l'échéance est prévue dans les 7 prochains jours.
 
 Le contenu affiché dépend des droits de l'utilisateur connecté.
 
 ---
 
-# 8. Pages de l'application
-
-## A. Pages publiques
-
-L'application possède au minimum deux pages accessibles sans connexion.
-
-### Page d'accueil
-
-La page d'accueil présente :
-
-- le but de TeamBoard
-- le fonctionnement général de l'application
-- les principales fonctionnalités
-- un accès à la connexion
-- un accès à la création de compte
-
-### Page d'authentification
-
-Cette page permet :
-
-- de se connecter
-- de créer un compte
-
-## B. Pages privées
-
-Les utilisateurs connectés disposent de plusieurs pages privées selon leur rôle :
-
-- **Tableau de bord** : vue d'ensemble des projets et tâches.
-- **Liste des projets** : consultation des projets accessibles.
-- **Détail d'un projet** : informations du projet et tâches associées.
-- **Liste des tâches** : consultation des tâches accessibles.
-- **Détail d'une tâche** : informations détaillées d'une tâche.
-- **Gestion du profil** : consultation et modification des informations personnelles.
-- **Gestion des projets et des tâches** : interface réservée au manager.
-
----
-
-# 9. Relations entre les données
-
-L'application gère plusieurs types de ressources liés entre eux :
-
-- **Utilisateurs**
-- **Projets**
-- **Tâches**
-
-Les relations principales sont les suivantes :
-
-- un utilisateur peut être assigné à plusieurs tâches
-- une tâche est assignée à un utilisateur
-- un projet peut contenir plusieurs tâches
-- une tâche appartient à un projet
-
-Ces relations permettent de gérer l'organisation des tâches au sein des différents projets.
-
----
-
-# 10. Communication par e-mail
+# 8. Communication par e-mail
 
 L'application permet d'envoyer des e-mails aux utilisateurs.
 
-Lorsqu'un manager assigne une nouvelle tâche à un collaborateur, celui-ci reçoit un e-mail l'informant de cette nouvelle tâche.
+Lorsqu'un manager assigne une tâche à un collaborateur, celui-ci reçoit un e-mail l'informant de cette nouvelle assignation.
+
+L'e-mail est envoyé au moment de l'assignation, que celle-ci soit effectuée lors de la création de la tâche ou ultérieurement.
+
+Aucun e-mail n'est envoyé tant qu'une tâche n'est pas assignée à un collaborateur.
 
 Les e-mails sont envoyés directement depuis l'application.
 
 ---
 
+# 9. Pages de l'application
+
+## 9.1 Pages publiques
+
+Les pages publiques sont accessibles sans authentification.
+
+### Page d'accueil
+
+La page d'accueil présente :
+
+- le but de TeamBoard ;
+- le fonctionnement général de l'application ;
+- les principales fonctionnalités ;
+- un accès à la connexion ;
+- un accès à la création de compte.
+
+### Page d'authentification
+
+Cette page permet :
+
+- de se connecter ;
+- de créer un compte.
+
+## 9.2 Pages privées
+
+Les utilisateurs authentifiés disposent de pages privées adaptées à leur rôle.
+
+### Tableau de bord
+
+Vue d'ensemble des projets et des tâches accessibles à l'utilisateur.
+
+### Liste des projets
+
+Liste des projets auxquels l'utilisateur a accès.
+
+### Détail d'un projet
+
+Présentation des informations du projet et des tâches qui lui sont associées.
+
+### Liste des tâches
+
+Liste des tâches auxquelles l'utilisateur a accès.
+
+Une tâche peut être développée directement dans la liste afin d'afficher ses informations détaillées.
+
+### Gestion du profil
+
+Consultation et modification des informations personnelles de l'utilisateur.
+
+### Gestion des projets et des tâches
+
+Interface réservée au manager permettant de gérer les projets, les tâches et leur assignation.
+
+---
+
+# 10. Modèle de données
+
+L'application repose principalement sur trois types de ressources :
+
+- **Utilisateurs**
+- **Projets**
+- **Tâches**
+
+## 10.1 Utilisateur
+
+Un utilisateur possède notamment :
+
+- un nom ;
+- une adresse e-mail ;
+- un mot de passe ;
+- un rôle.
+
+## 10.2 Projet
+
+Un projet possède notamment :
+
+- un nom ;
+- une description ;
+- une date de création ;
+- un statut.
+
+Un projet peut exister sans aucune tâche.
+
+## 10.3 Tâche
+
+Une tâche possède notamment :
+
+- un titre ;
+- une description ;
+- une date de création ;
+- une date d'échéance ;
+- une priorité ;
+- un statut ;
+- un projet associé ;
+- un utilisateur assigné, le cas échéant.
+
+## 10.4 Relations
+
+Les relations principales sont les suivantes :
+
+- un utilisateur peut être assigné à plusieurs tâches ;
+- une tâche peut être assignée à un utilisateur ou ne pas être assignée ;
+- un projet peut contenir plusieurs tâches ou aucune tâche ;
+- une tâche appartient à un seul projet.
+
+Un collaborateur peut accéder à un projet uniquement lorsqu'au moins une tâche de ce projet lui est assignée.
+
+---
+
 # 11. Sécurité
 
-L'application est protégée contre les principales vulnérabilités web.
+L'application doit être protégée contre les principales vulnérabilités web.
 
 Les mesures mises en place comprennent notamment :
 
-- protection contre les injections SQL
-- protection contre les attaques XSS
-- validation des données envoyées par les utilisateurs
-- nettoyage et traitement des entrées utilisateur
-- stockage sécurisé des mots de passe
-- contrôle des droits d'accès selon le rôle
-- protection des pages privées par authentification
+- utilisation de requêtes préparées afin de limiter les risques d'injection SQL ;
+- protection contre les attaques XSS ;
+- validation des données envoyées par les utilisateurs ;
+- traitement et nettoyage appropriés des entrées utilisateur ;
+- stockage sécurisé des mots de passe ;
+- contrôle des droits d'accès selon le rôle de l'utilisateur ;
+- protection des pages privées par authentification.
+
+Les contrôles d'autorisation doivent également être effectués côté serveur afin qu'un utilisateur ne puisse pas accéder directement à une ressource à laquelle il n'a pas droit.
 
 ---
 
@@ -265,11 +359,11 @@ L'application est disponible dans deux langues :
 - **Français**
 - **Anglais**
 
-L'ensemble des pages de l'application est disponible dans ces deux langues.
+L'ensemble des pages et fonctionnalités de l'application doit être disponible dans ces deux langues.
 
 L'utilisateur peut changer la langue de l'interface.
 
-La langue choisie est mémorisée à l'aide d'un **cookie** afin que l'application puisse se souvenir de la préférence linguistique de l'utilisateur lors de ses prochaines visites.
+La langue choisie est mémorisée à l'aide d'un cookie afin de conserver la préférence linguistique de l'utilisateur lors de ses prochaines visites.
 
 ---
 
@@ -277,75 +371,77 @@ La langue choisie est mémorisée à l'aide d'un **cookie** afin que l'applicati
 
 Ces fonctionnalités seront développées uniquement si le temps disponible le permet et après avoir terminé les fonctionnalités principales.
 
-### Commentaires
+## 13.1 Commentaires
 
 Permettre aux utilisateurs d'ajouter des commentaires sur une tâche.
 
-### Étiquettes
+## 13.2 Étiquettes
 
-Ajouter des étiquettes permettant de catégoriser les tâches.
+Permettre d'ajouter des étiquettes afin de catégoriser les tâches.
 
-Par exemple :
+Exemples :
 
 - Marketing
 - Développement
 - RH
 - Documentation
 
-### Recherche, filtrage et tri
+## 13.3 Recherche, filtrage et tri
 
-Permettre de rechercher, filtrer ou trier les tâches selon différents critères :
+Permettre de rechercher, filtrer et trier les tâches selon différents critères :
 
-- statut
-- priorité
-- projet
-- utilisateur assigné
-- date d'échéance
+- statut ;
+- priorité ;
+- projet ;
+- utilisateur assigné ;
+- date d'échéance.
 
 ---
 
-# 14. Contraintes techniques et méthodologiques
+# 14. Contraintes techniques
 
-### Technologies
+## 14.1 Technologies
 
 L'application est développée avec :
 
-- PHP
-- MySQL/MariaDB
-- HTML
-- CSS
-- JavaScript si nécessaire
+- PHP ;
+- MySQL/MariaDB ;
+- HTML ;
+- CSS ;
+- JavaScript lorsque nécessaire.
 
 Aucun framework PHP externe tel que Laravel ou Symfony n'est utilisé.
 
-### Programmation orientée objet
+## 14.2 Programmation orientée objet
 
 L'application utilise les principes de la programmation orientée objet.
 
 Les différentes responsabilités de l'application sont réparties dans des classes.
 
-Les classes sont chargées automatiquement grâce à un système d'autoload.
+## 14.3 Base de données
 
-### Base de données
-
-Les données sont stockées dans une base de données MySQL/MariaDB.
+Les données de l'application sont stockées dans une base de données MySQL/MariaDB.
 
 Les informations de connexion à la base de données sont stockées dans un fichier de configuration séparé du reste du code.
 
-### Déploiement
+---
 
-L'application est déployée sur Internet à l'aide d'Infomaniak et utilise une base de données MySQL/MariaDB dédiée.
+# 15. Déploiement
 
-### Organisation du développement
+L'application est déployée sur Internet à l'aide d'Infomaniak.
+
+Une base de données MySQL/MariaDB dédiée est utilisée pour l'application.
+
+---
+
+# 16. Organisation du développement
 
 Le développement est réalisé en équipe à l'aide de Git et GitHub.
 
 Le projet utilise notamment :
 
-- des issues pour organiser les tâches
-- des branches pour développer les fonctionnalités
-- des pull requests pour proposer les modifications
-- des merges pour intégrer les fonctionnalités
-- une gestion des conflits lors du travail simultané
-
-
+- des **issues** pour organiser et suivre les tâches ;
+- des **branches** pour développer les fonctionnalités ;
+- des **pull requests** pour proposer et revoir les modifications ;
+- des **merges** pour intégrer les fonctionnalités ;
+- une gestion des conflits lors du travail simultané.
