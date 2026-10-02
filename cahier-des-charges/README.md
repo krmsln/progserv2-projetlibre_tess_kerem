@@ -12,13 +12,13 @@
 
 TeamBoard est une application web de gestion de projets et de tâches destinée aux petites équipes.
 
-L'objectif de la plateforme est de centraliser les projets, de créer et d'assigner des tâches aux membres d'une équipe et de permettre un suivi clair de leur état d'avancement.
+L’objectif de la plateforme est de centraliser les projets, de créer et d’assigner des tâches aux collaborateurs, ainsi que de permettre un suivi clair de leur état d’avancement.
 
-L'application permet aux utilisateurs de consulter les projets auxquels ils participent et de suivre les tâches qui leur sont attribuées. Les managers disposent de droits supplémentaires leur permettant de gérer les projets et les tâches de l'équipe.
+L’application permet aux collaborateurs de consulter les projets auxquels ils participent et de suivre les tâches qui leur sont attribuées. Les managers disposent de droits supplémentaires leur permettant de gérer les projets et les tâches de leur équipe.
 
 **Spécificité du projet :**
 
-TeamBoard se concentre sur une gestion simple et claire des projets et des tâches. L'objectif est de proposer une interface permettant de visualiser rapidement les tâches, leurs responsables, leurs échéances et leur état d'avancement, sans ajouter de fonctionnalités complexes qui ne sont pas nécessaires au fonctionnement principal de l'application.
+TeamBoard se concentre sur une gestion simple et claire des projets et des tâches. L'objectif est de proposer une interface permettant de visualiser rapidement les tâches, leurs responsables, leurs échéances et leur état d'avancement.
 
 ---
 
@@ -70,8 +70,6 @@ Il peut :
 - supprimer les tâches
 - assigner des tâches aux collaborateurs.
 
-Le manager peut également consulter les tâches de l'équipe.
-
 ## B. Collaborateur
 
 Le collaborateur peut :
@@ -88,7 +86,7 @@ Les droits d'accès sont contrôlés selon le rôle de l'utilisateur connecté.
 
 # 5. Gestion des projets
 
-Un projet permet de regrouper plusieurs tâches autour d'un même objectif.
+Un projet permet de regrouper plusieurs tâches.
 
 Un projet contient notamment :
 
@@ -103,6 +101,10 @@ Le manager peut :
 - consulter un projet
 - modifier un projet
 - supprimer un projet
+
+Le collaborateur peut :
+
+- Consulter les projets auxquels il a au minimum une tâche assignée.
 
 Un projet peut contenir plusieurs tâches.
 
@@ -125,7 +127,7 @@ Une tâche contient notamment :
 
 ### Création
 
-Le manager peut créer une tâche et renseigner ses différentes informations.
+Le manager peut créer une tâche.
 
 ### Assignation
 
@@ -138,12 +140,13 @@ Les utilisateurs peuvent consulter les tâches auxquelles ils ont accès.
 La page de détail d'une tâche affiche notamment :
 
 - son titre
-- sa description
 - le projet associé
-- la personne assignée
+- sa date de création
+- sa date d'échéance
+- sa description
+- l'utilisateur assigné
 - sa priorité
 - son statut
-- son échéance
 
 ### Modification
 
@@ -167,7 +170,7 @@ Le manager peut supprimer une tâche.
 
 Une fois connecté, l'utilisateur dispose d'un tableau de bord adapté à son rôle.
 
-Le tableau de bord permet notamment de visualiser rapidement :
+Le tableau de bord permet notamment de visualiser :
 
 - les projets accessibles
 - les tâches à faire
@@ -233,8 +236,6 @@ Les relations principales sont les suivantes :
 
 Ces relations permettent de gérer l'organisation des tâches au sein des différents projets.
 
-La base de données comporte au minimum trois tables correspondant à ces différentes ressources.
-
 ---
 
 # 10. Communication par e-mail
@@ -249,7 +250,7 @@ Les e-mails sont envoyés directement depuis l'application.
 
 # 11. Sécurité
 
-L'application doit être protégée contre les principales vulnérabilités web.
+L'application est protégée contre les principales vulnérabilités web.
 
 Les mesures mises en place comprennent notamment :
 
@@ -263,7 +264,22 @@ Les mesures mises en place comprennent notamment :
 
 ---
 
-# 12. Fonctionnalités optionnelles
+# 12. Gestion multilingue
+
+L'application est disponible dans deux langues :
+
+- **Français**
+- **Anglais**
+
+L'ensemble des pages de l'application est disponible dans ces deux langues.
+
+L'utilisateur peut changer la langue de l'interface.
+
+La langue choisie est mémorisée à l'aide d'un **cookie** afin que l'application puisse se souvenir de la préférence linguistique de l'utilisateur lors de ses prochaines visites.
+
+---
+
+# 13. Fonctionnalités optionnelles
 
 Ces fonctionnalités seront développées uniquement si le temps disponible le permet et après avoir terminé les fonctionnalités principales.
 
@@ -294,7 +310,7 @@ Permettre de rechercher, filtrer ou trier les tâches selon différents critère
 
 ---
 
-# 13. Contraintes techniques et méthodologiques
+# 14. Contraintes techniques et méthodologiques
 
 ### Technologies
 
@@ -338,17 +354,4 @@ Le projet utilise notamment :
 - des merges pour intégrer les fonctionnalités
 - une gestion des conflits lors du travail simultané
 
----
 
-# 14. Gestion multilingue
-
-L'application est disponible dans deux langues :
-
-- **Français**
-- **Anglais**
-
-L'ensemble des pages de l'application est disponible dans ces deux langues.
-
-L'utilisateur peut changer la langue de l'interface.
-
-La langue choisie est mémorisée à l'aide d'un **cookie** afin que l'application puisse se souvenir de la préférence linguistique de l'utilisateur lors de ses prochaines visites.
