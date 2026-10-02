@@ -144,6 +144,12 @@ L'utilisateur peut se déconnecter à tout moment.
 
 L'utilisateur peut consulter et modifier les informations de son profil.
 
+##4.5 Gestion des sessions et des autorisations
+
+Après connexion, une session utilisateur est maintenue afin d'identifier l'utilisateur sur l'ensemble des pages privées de l'application.
+
+Les autorisations sont vérifiées côté serveur à chaque accès à une ressource protégée afin de garantir que chaque utilisateur ne puisse accéder qu'aux fonctionnalités et données correspondant à son rôle.
+
 ---
 
 # 5. Gestion des projets
@@ -275,7 +281,7 @@ Les e-mails sont envoyés directement depuis l'application.
 
 ## 9.1 Pages publiques
 
-Les pages publiques sont accessibles sans authentification.
+L'application comporte au minimum deux pages publiques accessibles sans authentification : une page d'accueil et une page d'authentification permettant la connexion et la création de compte.
 
 ### Page d'accueil
 
@@ -296,7 +302,7 @@ Cette page permet :
 
 ## 9.2 Pages privées
 
-Les utilisateurs authentifiés disposent de pages privées adaptées à leur rôle.
+L'application comporte au minimum cinq pages privées accessibles après authentification. Leur contenu et leur accès peuvent varier selon le rôle de l'utilisateur.
 
 ### Tableau de bord
 
@@ -388,7 +394,8 @@ Les mesures mises en place comprennent notamment :
 
 - utilisation de requêtes préparées afin de limiter les risques d'injection SQL ;
 - protection contre les attaques XSS ;
-- validation des données envoyées par les utilisateurs ;
+- validation des données saisies par l'utilisateur côté client et côté serveur ;
+- traitement et nettoyage appropriés des entrées utilisateur ;
 - traitement et nettoyage appropriés des entrées utilisateur ;
 - stockage sécurisé des mots de passe ;
 - contrôle des droits d'accès selon le rôle de l'utilisateur ;
@@ -460,7 +467,7 @@ Aucun framework PHP externe tel que Laravel ou Symfony n'est utilisé.
 
 ## 14.2 Programmation orientée objet
 
-L'application utilise les principes de la programmation orientée objet.
+L'application utilise les principes de la programmation orientée objet et les classes sont chargées automatiquement.
 
 Les différentes responsabilités de l'application sont réparties dans des classes.
 
