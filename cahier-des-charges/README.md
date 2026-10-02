@@ -46,7 +46,7 @@
 15. [Déploiement](#15-déploiement)
 16. [Organisation du développement](#16-organisation-du-développement)
 
-## 1. Informations générales
+# 1. Informations générales
 
 - **Nom du projet :** TeamBoard
 - **Membres de l'équipe :** Triponez Tess, Saylan Kerem
