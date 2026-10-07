@@ -45,6 +45,7 @@
     3. [Base de données](#143-base-de-données)
 15. [Déploiement](#15-déploiement)
 16. [Organisation du développement](#16-organisation-du-développement)
+17. [Maquette](#17-maquette)
 
 # 1. Informations générales
 
@@ -499,3 +500,11 @@ Le projet utilise notamment :
 - des **pull requests** pour proposer et revoir les modifications ;
 - des **merges** pour intégrer les fonctionnalités ;
 - une gestion des conflits lors du travail simultané.
+
+---
+
+# 17. Maquette
+
+La maquette de l'application a été réalisée avec Figma. Elle présente les principales pages et interfaces de TeamBoard.
+
+**Lien vers la maquette Figma :** https://www.figma.com/design/G3T9QHv8Z50WvdZrHffg0f/ProgServ2-Projet-Libre?node-id=0-1&t=c34AfTJCr3SHocH9-1
