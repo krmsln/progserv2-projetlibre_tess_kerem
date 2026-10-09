@@ -164,7 +164,7 @@ Les scripts PHP peuvent se connecter à la base de données MariaDB en utilisant
 le nom d'hôte `mariadb` et les identifiants définis dans le fichier
 `compose.yaml`.
 
-En accédant à l'adresse <http://localhost:8080/src/public/index.php>, vous pourrez
+En accédant à l'adresse <http://localhost:8080/public/index.php>, vous pourrez
 exécuter le script PHP principal du projet.
 
 La page d'accueil de démonstration affiche un message de bienvenue et utilise la
