@@ -209,7 +209,7 @@ Une tâche contient notamment :
 
 - **À faire**
 - **En cours**
-- **Terminée**
+- **Terminé**
 
 ## 6.2 Création et assignation
 
