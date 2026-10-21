@@ -108,5 +108,3 @@ Le fichier `config/database.ini` doit être configuré avec les informations de 
 - `password` : le mot de passe associé à cet utilisateur.
 
 Les valeurs dépendent de la base de données et de l'hébergement utilisés. Elles doivent donc être adaptées lors de l'installation sur un nouvel environnement.
-
-**Important :** le fichier `config/database.ini` contenant les identifiants réels ne doit pas être ajouté au dépôt Git. Le fichier `config/database.ini.example` doit servir de modèle et ne contenir aucune information secrète.
