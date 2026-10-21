@@ -1,8 +1,8 @@
-## Sécurisation des identifiants de la base de données
+# Sécurisation des identifiants de la base de données
 
 Cette procédure explique comment protéger les identifiants de connexion à MariaDB dans le projet TeamBoard, et comment modifier le mot de passe d'un utilisateur de la base de données.
 
-### 1. Créer un fichier `.env`
+## 1. Créer un fichier `.env`
 
 À la racine du projet, créer un fichier nommé `.env` contenant les variables utilisées par Docker Compose :
 
@@ -16,7 +16,7 @@ Remplacer les valeurs d'exemple par les valeurs utilisées dans le projet. Le mo
 
 Le fichier `.env` permet de séparer les identifiants du fichier de configuration Docker Compose.
 
-### 2. Configurer Docker Compose
+## 2. Configurer Docker Compose
 
 Vérifier que les variables définies dans `.env` sont utilisées dans le service `mariadb` du fichier `compose.yaml` :
 
@@ -32,7 +32,7 @@ L'option `MARIADB_RANDOM_ROOT_PASSWORD=yes` permet de générer un mot de passe 
 
 **Attention :** ces variables servent principalement à initialiser une nouvelle base de données. Si le volume MariaDB existe déjà, modifier `.env` ne change pas automatiquement le mot de passe enregistré dans MariaDB.
 
-### 3. Créer le fichier de configuration PHP
+## 3. Créer le fichier de configuration PHP
 
 S'il n'existe pas encore, créer un dossier `config` à la racine du projet, en dehors du dossier public accessible depuis le navigateur.
 
@@ -52,7 +52,7 @@ Le nom d'hôte `mariadb` correspond au nom du service MariaDB dans Docker Compos
 
 Le fichier `database.ini` contient des informations confidentielles : il ne doit pas être placé dans le dossier public ni être publié sur Git.
 
-### 4. Fichier d'exemple
+## 4. Fichier d'exemple
 
 Le fichier `config/database.ini.example` contient des valeurs fictives :
 
@@ -66,7 +66,7 @@ password = "change_me"
 
 Ce fichier sert de modèle aux autres développeurs. Il peut être partagé dans le dépôt, car il ne contient pas de véritable mot de passe.
 
-### 5. Ajouter les fichiers confidentiels au `.gitignore`
+## 5. Ajouter les fichiers confidentiels au `.gitignore`
 
 S'assurer que les lignes suivantes ont bien été ajoutées au fichier `.gitignore`, situé à la racine du projet :\
 
@@ -81,7 +81,7 @@ Le fichier `config/database.ini.example`, lui, peut être versionné.
 
 **Important :** `.gitignore` n'enlève pas un fichier déjà suivi par Git et ne supprime pas les secrets présents dans les anciens commits.
 
-### 6. Modifier le mot de passe MariaDB
+## 6. Modifier le mot de passe MariaDB
 
 Dans le cas où la base de données a déjà été créée avec le même mot de passe que celui indiqué dans le fichier `database.ini.example`, il est important de modifier le mot de passe du compte utilisé par l'application :
 
@@ -118,7 +118,7 @@ Dans le cas où la base de données a déjà été créée avec le même mot de 
 
 Choisir un mot de passe robuste et ne pas utiliser littéralement le mot de passe de cet exemple.
 
-### 7. Mettre à jour les fichiers de configuration
+## 7. Mettre à jour les fichiers de configuration
 
 Après le changement de mot de passe, mettre à jour les fichiers suivants avec le même mot de passe :
 
@@ -129,7 +129,7 @@ Cela permet à Docker Compose et à l'application PHP d'utiliser les bons identi
 
 **Attention :** modifier `.env` ne modifie pas à lui seul le mot de passe dans une base MariaDB déjà initialisée. C'est la commande SQL `ALTER USER` qui effectue cette modification.
 
-### 8. Vérifier que les fichiers sont ignorés par Git\
+## 8. Vérifier que les fichiers sont ignorés par Git\
 
 Exécuter la commande suivante à la racine du projet :
 
@@ -155,7 +155,7 @@ git rm --cached -- .env config/database.ini
 
 Puis enregistrer ce changement dans un commit.
 
-### 9. Bonnes pratiques de sécurité\
+## 9. Bonnes pratiques de sécurité\
 
 - Ne jamais publier un véritable mot de passe dans le dépôt Git.
 - Ne jamais placer les fichiers contenant des secrets dans le dossier public.

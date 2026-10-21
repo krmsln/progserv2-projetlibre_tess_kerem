@@ -1,4 +1,4 @@
-## Utilisation d'outils d'intelligence artificielle
+# Utilisation d'outils d'intelligence artificielle
 
 **Mot de passe administrateur (script.sql) :** J'ai demandé à l'IA de générer la
 chaîne hachée du mot de passe (`password`) avec l'algorithme BCRYPT pour le
