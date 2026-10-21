@@ -129,7 +129,7 @@ Cela permet à Docker Compose et à l'application PHP d'utiliser les bons identi
 
 **Attention :** modifier `.env` ne modifie pas à lui seul le mot de passe dans une base MariaDB déjà initialisée. C'est la commande SQL `ALTER USER` qui effectue cette modification.
 
-## 8. Vérifier que les fichiers sont ignorés par Git\
+## 8. Vérifier que les fichiers sont ignorés par Git
 
 Exécuter la commande suivante à la racine du projet :
 
@@ -155,7 +155,7 @@ git rm --cached -- .env config/database.ini
 
 Puis enregistrer ce changement dans un commit.
 
-## 9. Bonnes pratiques de sécurité\
+## 9. Bonnes pratiques de sécurité
 
 - Ne jamais publier un véritable mot de passe dans le dépôt Git.
 - Ne jamais placer les fichiers contenant des secrets dans le dossier public.
