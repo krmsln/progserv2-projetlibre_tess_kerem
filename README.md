@@ -98,6 +98,12 @@ en utilisant la commande _"Dev Containers: Reopen in Container"_ dans la palette
 de commandes (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> sur Windows/Linux ou
 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> sur macOS).
 
+## Définissez les identifiants de connexion à la base de données et sécurisez-les
+
+Pour assurer la sécurité des données de la base de données créée, il faut définir un mot de passe et veiller à le conserver en lieu sûr.
+
+Pour ce faire, suivez la procédure suivante : [Configuration et sécurité de la base de données](docs/securite-database/README.md)
+
 ## Démarrer les services Docker
 
 Pour démarrer les services Docker nécessaires à développer des applications PHP,
@@ -125,8 +131,8 @@ Pour accéder à phpMyAdmin, ouvrez votre navigateur et rendez-vous à l'adresse
 suivante : <http://localhost:9090>.
 
 Vous pourrez alors vous connecter à la base de données en utilisant les
-identifiants décrits dans le fichier `compose.yaml` (par défaut, l'utilisateur
-est `username` et le mot de passe est `password`).
+identifiants décrits dans le fichier `database.ini` (par défaut dans le fichier `database.ini.example`, l'utilisateur
+est `username` et le mot de passe est `change_me`).
 
 ## Exécuter des requêtes SQL sur la base de données MariaDB
 
@@ -145,7 +151,7 @@ effectuer d'autres opérations sur la base de données.
 ## Voir les données de la table `my_table`
 
 Une fois le ou les scripts SQL exécutés, vous pouvez vérifier que les données
-ont été correctement insérées dans la table `my_table` dans le menu latéral
+ont été correctement insérées dans les tables dans le menu latéral
 gauche de phpMyAdmin. Cliquez sur le nom de la base de données, puis sur le nom
 de la table pour voir les données.
 
@@ -162,7 +168,7 @@ un fichier pour l'exécuter.
 
 Les scripts PHP peuvent se connecter à la base de données MariaDB en utilisant
 le nom d'hôte `mariadb` et les identifiants définis dans le fichier
-`compose.yaml`.
+`database.ini`.
 
 En accédant à l'adresse <http://localhost:8080/public/index.php>, vous pourrez
 exécuter le script PHP principal du projet.

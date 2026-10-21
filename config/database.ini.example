@@ -1,0 +1,5 @@
+host = "mariadb"
+port = 3306
+database = "my_database"
+username = "username"
+password = "change_me"

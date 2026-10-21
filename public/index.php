@@ -1,18 +1,36 @@
 <?php
-const DB_HOST = 'mariadb';
-const DB_PORT = 3306;
-const DB_NAME = 'my_database';
-const DB_USER = 'username';
-const DB_PASSWORD = 'password';
+const DATABASE_CONFIGURATION_FILE = __DIR__ . '/../config/database.ini';
 
-$dsn = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8mb4";
+$config = parse_ini_file(DATABASE_CONFIGURATION_FILE, true);
 
-$pdo = new PDO($dsn, DB_USER, DB_PASSWORD);
+if (!$config) {
+    throw new Exception("Erreur lors de la lecture du fichier de configuration : " . DATABASE_CONFIGURATION_FILE);
+}
 
+$host = $config['host'];
+$port = $config['port'];
+$database = $config['database'];
+$username = $config['username'];
+$password = $config['password'];
+
+// Connexion à la base de données
+$pdo = new PDO("mysql:host=$host;port=$port;charset=utf8mb4", $username, $password);
+
+//⚠️ à adapter
+// Création de la base de données si elle n'existe pas
+$sql = "CREATE DATABASE IF NOT EXISTS `$database` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+
+// Sélection de la base de données
+$sql = "USE `$database`;";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+
+//⚠️ à adapter
 $sql = "SELECT * FROM my_table";
 
 $stmt = $pdo->prepare($sql);
-
 $stmt->execute();
 
 $results = $stmt->fetchAll();

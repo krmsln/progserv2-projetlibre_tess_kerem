@@ -12,3 +12,7 @@ Thumbs.db
 
 # Folder config file
 [Dd]esktop.ini
+
+# Fichiers contenant des informations sensibles
+/config/database.ini
+/.env
