@@ -1,35 +1,11 @@
 <?php
-const DATABASE_CONFIGURATION_FILE = __DIR__ . '/../config/database.ini';
+require_once __DIR__ . '/../src/autoload.php';
 
-$config = parse_ini_file(DATABASE_CONFIGURATION_FILE, true);
+$db = new Database();
+$pdo = $db->getConnection();
 
-if (!$config) {
-    throw new Exception("Erreur lors de la lecture du fichier de configuration : " . DATABASE_CONFIGURATION_FILE);
-}
-
-$host = $config['host'];
-$port = $config['port'];
-$database = $config['database'];
-$username = $config['username'];
-$password = $config['password'];
-
-// Connexion à la base de données
-$pdo = new PDO("mysql:host=$host;port=$port;charset=utf8mb4", $username, $password);
-
-//⚠️ à adapter
-// Création de la base de données si elle n'existe pas
-$sql = "CREATE DATABASE IF NOT EXISTS `$database` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-
-// Sélection de la base de données
-$sql = "USE `$database`;";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-
-//⚠️ à adapter
-$sql = "SELECT * FROM my_table";
-
+// requete test sur users
+$sql = "SELECT * FROM users";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 
@@ -42,22 +18,22 @@ $results = $stmt->fetchAll();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProgServ2 Course PHP Template</title>
+    <title>TeamBoard</title>
 </head>
 
 <body>
-    <h1>ProgServ2 Course PHP Template</h1>
+    <h1>TeamBoard</h1>
 
     <p>Bienvenue dans votre projet PHP pour le cours ProgServ2 à la HEIG-VD !</p>
 
-    <h2>Résultats de la base de données :</h2>
+    <h2>Utilisateurs de la base de données :</h2>
 
     <ul>
         <?php foreach ($results as $row) { ?>
             <li>ID: <?= htmlspecialchars($row['id']) ?>
                 <ul>
-                    <li>Column1: <?= htmlspecialchars($row['column1']) ?></li>
-                    <li>Column2: <?= htmlspecialchars($row['column2']) ?></li>
+                    <li>Column1: <?= htmlspecialchars($row['name']) ?></li>
+                    <li>Column2: <?= htmlspecialchars($row['email_address']) ?></li>
                 </ul>
             </li>
         <?php } ?>
