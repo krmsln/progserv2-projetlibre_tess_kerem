@@ -15,12 +15,12 @@ class UserManager {
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
 
-        $results = $stmt->fetchAll();
+        $requestResults = $stmt->fetchAll();
 
         $users = [];
         //1 ligne = tous les attributs d’un objet.
         //un objet et ses attributs dans une cellule du tableau
-        foreach ($results as $row) {
+        foreach ($requestResults as $row) {
             $users[] = new User(
                 $row['id'],
                 $row['name'],
