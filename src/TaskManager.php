@@ -1,4 +1,3 @@
-
 <?php
 //Gérer les tâches dans la base de données.
 class TaskManager {
@@ -8,7 +7,7 @@ class TaskManager {
         $this->pdo = $database->getConnection();
     }
 
-//Récupère toutes les tâches.
+    //Récupère toutes les tâches.
     public function getTasks(): array {
         $sql = "SELECT * FROM tasks";
 
@@ -36,7 +35,7 @@ class TaskManager {
         return $tasks;
     }
 
-//Récupère une tâche grâce à son identifiant.
+    //Récupère une tâche grâce à son identifiant.
     public function getTaskById(int $id): ?Task {
         $sql = "SELECT * FROM tasks WHERE id = :id";
 
@@ -64,7 +63,7 @@ class TaskManager {
         );
     }
 
-//Récupère les tâches d'un projet.
+    //Récupère les tâches d'un projet.
     public function getTasksByProjectId(int $projectId): array {
         $sql = "SELECT * FROM tasks WHERE id_project = :id_project";
 
@@ -94,7 +93,7 @@ class TaskManager {
         return $tasks;
     }
 
-//Récupère les tâches attribuées à un utilisateur.
+    //Récupère les tâches attribuées à un utilisateur.
     public function getTasksByUserId(int $userId): array {
         $sql = "SELECT * FROM tasks WHERE id_user = :id_user";
 
@@ -124,7 +123,7 @@ class TaskManager {
         return $tasks;
     }
 
-//Ajoute une tâche.
+    //Ajoute une tâche.
     public function addTask(Task $task): bool {
         $sql = "INSERT INTO tasks
                 (title, description, creation_date, due_date, id_user,
@@ -147,7 +146,7 @@ class TaskManager {
         ]);
     }
 
-//Modifie les informations d'une tâche.
+    //Modifie les informations d'une tâche.
     public function updateTask(Task $task): bool {
         if ($task->getId() === null) {
             return false;
@@ -179,7 +178,7 @@ class TaskManager {
         ]);
     }
 
-//Modifie le statut d'une tâche attribuée à un utilisateur.
+    //Modifie le statut d'une tâche attribuée à un utilisateur.
     public function updateTaskStatusForUser(
         int $taskId,
         int $userId,
@@ -199,7 +198,7 @@ class TaskManager {
         ]);
     }
 
-//Supprime une tâche grâce à son identifiant.
+    //Supprime une tâche grâce à son identifiant.
     public function removeTask(int $id): bool {
         $sql = "DELETE FROM tasks WHERE id = :id";
 

@@ -1,4 +1,3 @@
-
 <?php
 //Classe pour gérer les utilisateurs.
 class UserManager {
