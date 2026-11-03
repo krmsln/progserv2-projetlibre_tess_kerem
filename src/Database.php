@@ -1,5 +1,4 @@
 <?php
-
 class Database {
     const DATABASE_CONFIGURATION_FILE = __DIR__ . '/../config/database.ini';
 

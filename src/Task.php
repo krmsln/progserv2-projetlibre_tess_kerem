@@ -1,5 +1,4 @@
 <?php
-
 class Task {
     private ?int $id;
     private string $title;

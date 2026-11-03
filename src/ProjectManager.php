@@ -1,5 +1,4 @@
 <?php
-
 // Classe qui gère les projets.
 class ProjectManager {
     private PDO $pdo;
