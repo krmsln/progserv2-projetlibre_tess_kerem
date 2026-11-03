@@ -73,7 +73,3 @@ INSERT INTO status_types (label) VALUES
 ('En cours'), 
 ('Terminé');
 
--- compte admin pour test 
-INSERT INTO users (name, email_address, password, id_role_type) VALUES
-('admintest', 'admin@test.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1); -- IA pour la génération du mdp sécurisé (voir readme)
-
