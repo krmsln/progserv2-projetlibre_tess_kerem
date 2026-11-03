@@ -14,6 +14,8 @@ $user = $userManager->getUserById((int) $_SESSION['user_id']);
 $error = '';
 $success = '';
 
+$mode = $_GET['mode'] ?? 'view';
+
 $name = $user->getName();
 $email = $user->getEmailAddress();
 
@@ -38,8 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($userManager->updateProfileUser($user)) {
                 $_SESSION['user_name'] = $user->getName();
-
                 $success = "Votre profil a été modifié avec succès.";
+                $mode = 'view';
             } else {
                 $error = "Erreur lors de la modification du profil.";
             }
@@ -77,28 +79,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p><?= htmlspecialchars($success) ?></p>
         <?php endif; ?>
 
-        <section>
-            <h2>Gestion de mon profil</h2>
+        <?php if ($mode === 'edit'): ?>
+            <section>
+                <h2>Modifier mon profil</h2>
 
-            <form method="POST" action="profile.php">
+                <form method="POST" action="profile.php?mode=edit">
+
+                    <div>
+                        <label for="name">Nom :</label>
+                        <input type="text" id="name" name="name" required maxlength="100"
+                            value="<?= htmlspecialchars($name) ?>">
+                    </div>
+
+                    <div>
+                        <label for="email">Adresse e-mail :</label>
+                        <input type="email" id="email" name="email" required maxlength="255"
+                            value="<?= htmlspecialchars($email) ?>">
+                    </div>
+
+                    <button type="submit">Enregistrer les modifications</button>
+                </form>
+
+                <p><a href="profile.php">Annuler</a></p>
+            </section>
+
+        <?php else: ?>
+            <section>
+                <h2>Mon profil</h2>
 
                 <div>
-                    <label for="name">Nom :</label>
-                    <input type="text" id="name" name="name" required maxlength="20"
-                        value="<?= htmlspecialchars($name) ?>">
+                    <p><strong>Nom :</strong> <?= htmlspecialchars($user->getName()) ?></p>
+                    <p><strong>Adresse e-mail :</strong> <?= htmlspecialchars($user->getEmailAddress()) ?></p>
                 </div>
 
-                <div>
-                    <label for="email">Adresse e-mail :</label>
-                    <input type="email" id="email" name="email" required maxlength="40"
-                        value="<?= htmlspecialchars($email) ?>">
-                </div>
-
-                <button type="submit">Enregistrer les modifications</button>
-            </form>
-
-            <p><a href="dashboard.php">Retour au tableau de bord</a></p>
-        </section>
+                <a href="profile.php?mode=edit">
+                    <button type="button">Modifier mon profil</button>
+                </a>
+            </section>
+        <?php endif; ?>
     </main>
 </body>
 
