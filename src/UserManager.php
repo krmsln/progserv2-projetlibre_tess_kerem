@@ -123,4 +123,17 @@ class UserManager {
             'id' => $id
         ]);
     }
+
+    // Vérifie si l'adresse email est déjà attribuée à un utilisateur.
+    public function emailAlreadyUsed(string $email, int $userId): bool{
+        $sql = "SELECT id FROM users WHERE email_address = :email AND id != :id";
+
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt -> execute([
+            'email' => $email,
+            'id' => $userId]);
+
+            return $stmt->fetch()!==false;
+    }
 }
