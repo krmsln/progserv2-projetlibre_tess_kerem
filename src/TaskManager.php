@@ -208,4 +208,24 @@ class TaskManager {
             'id' => $id
         ]);
     }
+
+    // Récupère tous les statuts disponibles.
+    public function getStatusTypes(): array {
+        $sql = "SELECT * FROM status_types";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    // Récupère tous les niveaux de priorité disponibles.
+    public function getPriorityLevels(): array {
+        $sql = "SELECT * FROM priority_levels";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }
