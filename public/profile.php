@@ -67,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="index.php">Retour à l'accueil</a> |
             <a href="dashboard.php">Tableau de bord</a> |
             <a href="profile.php">Mon profil</a>
+            <a href="logout.php">Déconnexion</a>
         </nav>
     </header>
 
