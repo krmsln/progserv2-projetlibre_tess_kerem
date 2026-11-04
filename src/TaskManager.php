@@ -179,11 +179,7 @@ class TaskManager {
     }
 
     //Modifie le statut d'une tâche attribuée à un utilisateur.
-    public function updateTaskStatusForUser(
-        int $taskId,
-        int $userId,
-        int $statusId
-    ): bool {
+    public function updateTaskStatusForUser(int $taskId, int $userId, int $statusId): bool {
         $sql = "UPDATE tasks
                 SET id_status_type = :id_status_type
                 WHERE id = :id
