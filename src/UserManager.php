@@ -113,6 +113,23 @@ class UserManager {
         ]);
     }
 
+    // Modifie le nom et l'adresse e-mail d'un utilisateur.
+    public function updateProfileUser(User $user): bool {
+        if ($user->getId() === null) {
+            return false;
+        }
+
+        $sql = "UPDATE users SET name = :name, email_address = :email_address WHERE id = :id";
+
+        $stmt = $this->pdo->prepare($sql);
+
+        return $stmt->execute([
+            'name' => $user->getName(),
+            'email_address' => $user->getEmailAddress(),
+            'id' => $user->getId()
+        ]);
+    }
+
     //Supprime un utilisateur grâce à son identifiant.
     public function removeUser(int $id): bool {
         $sql = "DELETE FROM users WHERE id = :id";
@@ -123,4 +140,18 @@ class UserManager {
             'id' => $id
         ]);
     }
+
+    // Vérifie si l'adresse email est déjà attribuée à un utilisateur.
+    public function emailAlreadyUsed(string $email, int $userId): bool{
+        $sql = "SELECT id FROM users WHERE email_address = :email AND id != :id";
+
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt -> execute([
+            'email' => $email,
+            'id' => $userId]);
+
+            return $stmt->fetch()!==false;
+    }
+
 }

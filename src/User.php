@@ -1,5 +1,4 @@
 <?php
-
 class User {
     private ?int $id;
     private string $name;
@@ -37,12 +36,24 @@ class User {
 
 
     public function setName(string $name): void {
-        $this->name = trim($name);
+        $name = trim($name);
+
+        if($name === ''){
+            throw new Exception("Le nom ne peut pas être vide.");
+        }
+
+        if(strlen($name)> 20){
+            throw new Exception("Le nom ne peut pas dépasser 20 caractères.");
+        }
+
+        $this->name = $name;
     }
 
     public function setEmailAddress(string $email_address): void {
+        $email_address = trim($email_address);
+
         if (filter_var($email_address, FILTER_VALIDATE_EMAIL)) {
-            $this->email_address = trim($email_address);
+            $this->email_address = $email_address;
         } else {
             throw new Exception("L'adresse e-mail n'est pas valide.");
         }

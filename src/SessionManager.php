@@ -1,5 +1,4 @@
 <?php
-
 class SessionManager {
     public const ROLE_MANAGER = 1;
     public const ROLE_COLLABORATOR = 2;
