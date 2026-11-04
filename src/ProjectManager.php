@@ -1,6 +1,6 @@
 <?php
 // Classe qui gère les projets.
-class ProjectManager {
+class ProjectManager implements ProjectManagerInterface {
     private PDO $pdo;
 
     public function __construct(Database $database) {
