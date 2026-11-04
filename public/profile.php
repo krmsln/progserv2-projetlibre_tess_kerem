@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Cette adresse e-mail est déjà associée à un autre compte.";
     } else {
         try {
-            // Mise à jour des informations de l'utilisateur.
+            // Mise à jour des informations de l'utilisateur
             $user->setName($name);
             $user->setEmailAddress($email);
 
