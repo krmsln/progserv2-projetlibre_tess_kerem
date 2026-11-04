@@ -8,6 +8,8 @@ interface TaskManagerInterface{
     public function updateTask(Task $task): bool;
     public function updateTaskStatusForUser(int $taskId, int $userId, int $statusId): bool;
     public function removeTask(int $id): bool;
+    public function getStatusTypes(): array;
+    public function getPriorityLevels(): array;
 
 }
 

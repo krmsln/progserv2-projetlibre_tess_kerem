@@ -1,6 +1,6 @@
 <?php
 //Classe pour gérer les utilisateurs.
-class UserManager {
+class UserManager implements UserManagerInterface {
     private PDO $pdo;
 
     public function __construct(Database $database) {

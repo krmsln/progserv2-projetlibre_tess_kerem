@@ -60,6 +60,7 @@ class DashboardManager {
 
 
     // Récupère les échéances des 7 prochains jours
+    // Aide de l'IA pour la requête SQL permettant récupèrer les échéances des 7 prochains jours
     public function getUpcomingTasks(?int $userId = null): array {
         $sql = "SELECT
                     tasks.id,

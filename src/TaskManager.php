@@ -1,6 +1,6 @@
 <?php
 //Gérer les tâches dans la base de données.
-class TaskManager {
+class TaskManager implements TaskManagerInterface {
     private PDO $pdo;
 
     public function __construct(Database $database) {
