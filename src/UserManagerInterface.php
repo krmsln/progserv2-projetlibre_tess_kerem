@@ -1,5 +1,5 @@
 <?php
-interface UserManagerInterface{
+interface UserManagerInterface {
     public function getUsers(): array;
     public function getUserById(int $id): ?User;
     public function getUserByEmail(string $email): ?User;
