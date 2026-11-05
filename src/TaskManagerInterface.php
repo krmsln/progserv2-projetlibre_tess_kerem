@@ -1,5 +1,5 @@
 <?php
-interface TaskManagerInterface{
+interface TaskManagerInterface {
     public function getTasks(): array;
     public function getTaskById(int $id): ?Task;
     public function getTasksByProjectId(int $projectId): array;
@@ -10,6 +10,4 @@ interface TaskManagerInterface{
     public function removeTask(int $id): bool;
     public function getStatusTypes(): array;
     public function getPriorityLevels(): array;
-
 }
-

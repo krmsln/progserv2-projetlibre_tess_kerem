@@ -38,11 +38,11 @@ class User {
     public function setName(string $name): void {
         $name = trim($name);
 
-        if($name === ''){
+        if ($name === '') {
             throw new Exception("Le nom ne peut pas être vide.");
         }
 
-        if(strlen($name)> 20){
+        if (strlen($name) > 20) {
             throw new Exception("Le nom ne peut pas dépasser 20 caractères.");
         }
 

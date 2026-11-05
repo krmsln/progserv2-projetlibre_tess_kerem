@@ -1,6 +1,6 @@
 <?php
 // Classe qui gère les données du tableau de bord
-class DashboardManager {
+class DashboardManager implements DashboardManagerInterface {
     private PDO $pdo;
 
     public function __construct(Database $database) {
