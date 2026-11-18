@@ -37,9 +37,10 @@ class UserManager implements UserManagerInterface {
         $sql = "SELECT * FROM users WHERE id = :id";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            'id' => $id
-        ]);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
 
         $row = $stmt->fetch();
         //Si aucun utilisateur n'a été trouvé, retourne null
@@ -61,9 +62,10 @@ class UserManager implements UserManagerInterface {
         $sql = "SELECT * FROM users WHERE email_address = :email";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            'email' => $email
-        ]);
+
+        $stmt->bindValue(':email', $email);
+
+        $stmt->execute();
 
         $row = $stmt->fetch();
 
@@ -87,12 +89,15 @@ class UserManager implements UserManagerInterface {
 
         $stmt = $this->pdo->prepare($sql);
 
-        return $stmt->execute([
-            'name' => $user->getName(),
-            'email_address' => $user->getEmailAddress(),
-            'password' => password_hash($user->getPassword(), PASSWORD_DEFAULT),
-            'id_role_type' => $user->getIdRoleType()
-        ]);
+        // Hachage du mot de passe
+        $passwordHash = password_hash($user->getPassword(), PASSWORD_DEFAULT);
+
+        $stmt->bindValue(':name', $user->getName());
+        $stmt->bindValue(':email_address', $user->getEmailAddress());
+        $stmt->bindValue(':password', $passwordHash);
+        $stmt->bindValue(':id_role_type', $user->getIdRoleType());
+
+        return $stmt->execute();
     }
 
     //Modifie les informations d'un utilisateur.
@@ -105,12 +110,12 @@ class UserManager implements UserManagerInterface {
 
         $stmt = $this->pdo->prepare($sql);
 
-        return $stmt->execute([
-            'name' => $user->getName(),
-            'email_address' => $user->getEmailAddress(),
-            'id_role_type' => $user->getIdRoleType(),
-            'id' => $user->getId()
-        ]);
+        $stmt->bindValue(':name', $user->getName());
+        $stmt->bindValue(':email_address', $user->getEmailAddress());
+        $stmt->bindValue(':id_role_type', $user->getIdRoleType());
+        $stmt->bindValue(':id', $user->getId());
+
+        return $stmt->execute();
     }
 
     // Modifie le nom et l'adresse e-mail d'un utilisateur.
@@ -123,11 +128,11 @@ class UserManager implements UserManagerInterface {
 
         $stmt = $this->pdo->prepare($sql);
 
-        return $stmt->execute([
-            'name' => $user->getName(),
-            'email_address' => $user->getEmailAddress(),
-            'id' => $user->getId()
-        ]);
+        $stmt->bindValue(':name', $user->getName());
+        $stmt->bindValue(':email_address', $user->getEmailAddress());
+        $stmt->bindValue(':id', $user->getId());
+
+        return $stmt->execute();
     }
 
     //Supprime un utilisateur grâce à son identifiant.
@@ -136,9 +141,9 @@ class UserManager implements UserManagerInterface {
 
         $stmt = $this->pdo->prepare($sql);
 
-        return $stmt->execute([
-            'id' => $id
-        ]);
+        $stmt->bindValue(':id', $id);
+
+        return $stmt->execute();
     }
 
     // Vérifie si l'adresse email est déjà attribuée à un utilisateur.
@@ -147,10 +152,10 @@ class UserManager implements UserManagerInterface {
 
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->execute([
-            'email' => $email,
-            'id' => $userId
-        ]);
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':id', $userId);
+
+        $stmt->execute();
 
         return $stmt->fetch() !== false;
     }

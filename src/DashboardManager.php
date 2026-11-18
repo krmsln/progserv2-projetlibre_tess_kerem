@@ -25,12 +25,10 @@ class DashboardManager implements DashboardManagerInterface {
         $stmt = $this->pdo->prepare($sql);
 
         if ($userId !== null) {
-            $stmt->execute([
-                'id_user' => $userId
-            ]);
-        } else {
-            $stmt->execute();
+            $stmt->bindValue(':id_user', $userId);
         }
+
+        $stmt->execute();
 
         $requestResults = $stmt->fetchAll();
 
@@ -88,12 +86,10 @@ class DashboardManager implements DashboardManagerInterface {
         $stmt = $this->pdo->prepare($sql);
 
         if ($userId !== null) {
-            $stmt->execute([
-                'id_user' => $userId
-            ]);
-        } else {
-            $stmt->execute();
+            $stmt->bindValue(':id_user', $userId);
         }
+
+        $stmt->execute();
 
         return $stmt->fetchAll();
     }
@@ -107,7 +103,6 @@ class DashboardManager implements DashboardManagerInterface {
             $sql = "SELECT * FROM projects ORDER BY creation_date DESC";
 
             $stmt = $this->pdo->prepare($sql);
-            $stmt->execute();
         } else {
             // Récupère les projets auxquels les tâches de l'utilisateur sont rattachées
             $sql = "SELECT DISTINCT projects.*
@@ -118,10 +113,12 @@ class DashboardManager implements DashboardManagerInterface {
                     ORDER BY projects.creation_date DESC";
 
             $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([
-                'id_user' => $userId
-            ]);
+
+            $stmt->bindValue(':id_user', $userId);
+
         }
+
+        $stmt->execute();
 
         return $stmt->fetchAll();
     }

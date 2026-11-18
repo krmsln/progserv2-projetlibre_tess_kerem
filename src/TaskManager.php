@@ -40,9 +40,10 @@ class TaskManager implements TaskManagerInterface {
         $sql = "SELECT * FROM tasks WHERE id = :id";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            'id' => $id
-        ]);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
 
         $row = $stmt->fetch();
 
@@ -68,9 +69,8 @@ class TaskManager implements TaskManagerInterface {
         $sql = "SELECT * FROM tasks WHERE id_project = :id_project";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            'id_project' => $projectId
-        ]);
+        $stmt->bindValue(':id_project', $projectId);
+        $stmt->execute();
 
         $requestResults = $stmt->fetchAll();
 
@@ -98,9 +98,8 @@ class TaskManager implements TaskManagerInterface {
         $sql = "SELECT * FROM tasks WHERE id_user = :id_user";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            'id_user' => $userId
-        ]);
+        $stmt->bindValue(':id_user', $userId);
+        $stmt->execute();
 
         $requestResults = $stmt->fetchAll();
 
@@ -134,16 +133,17 @@ class TaskManager implements TaskManagerInterface {
 
         $stmt = $this->pdo->prepare($sql);
 
-        return $stmt->execute([
-            'title' => $task->getTitle(),
-            'description' => $task->getDescription(),
-            'creation_date' => $task->getCreationDate(),
-            'due_date' => $task->getDueDate(),
-            'id_user' => $task->getIdUser(),
-            'id_project' => $task->getIdProject(),
-            'id_status_type' => $task->getIdStatusType(),
-            'id_priority_level' => $task->getIdPriorityLevel()
-        ]);
+        $stmt->bindValue(':title', $task->getTitle());
+        $stmt->bindValue(':description', $task->getDescription());
+        $stmt->bindValue(':creation_date', $task->getCreationDate());
+        $stmt->bindValue(':due_date', $task->getDueDate());
+        $stmt->bindValue(':id_user', $task->getIdUser());
+        $stmt->bindValue(':id_project', $task->getIdProject());
+        $stmt->bindValue(':id_status_type', $task->getIdStatusType());
+        $stmt->bindValue(':id_priority_level', $task->getIdPriorityLevel());
+
+
+        return $stmt->execute();
     }
 
     //Modifie les informations d'une tâche.
@@ -165,17 +165,17 @@ class TaskManager implements TaskManagerInterface {
 
         $stmt = $this->pdo->prepare($sql);
 
-        return $stmt->execute([
-            'title' => $task->getTitle(),
-            'description' => $task->getDescription(),
-            'creation_date' => $task->getCreationDate(),
-            'due_date' => $task->getDueDate(),
-            'id_user' => $task->getIdUser(),
-            'id_project' => $task->getIdProject(),
-            'id_status_type' => $task->getIdStatusType(),
-            'id_priority_level' => $task->getIdPriorityLevel(),
-            'id' => $task->getId()
-        ]);
+        $stmt->bindValue(':title', $task->getTitle());
+        $stmt->bindValue(':description', $task->getDescription());
+        $stmt->bindValue(':creation_date', $task->getCreationDate());
+        $stmt->bindValue(':due_date', $task->getDueDate());
+        $stmt->bindValue(':id_user', $task->getIdUser());
+        $stmt->bindValue(':id_project', $task->getIdProject());
+        $stmt->bindValue(':id_status_type', $task->getIdStatusType());
+        $stmt->bindValue(':id_priority_level', $task->getIdPriorityLevel());
+        $stmt->bindValue(':id', $task->getId());
+
+        return $stmt->execute();
     }
 
     //Modifie le statut d'une tâche attribuée à un utilisateur.
@@ -187,11 +187,11 @@ class TaskManager implements TaskManagerInterface {
 
         $stmt = $this->pdo->prepare($sql);
 
-        return $stmt->execute([
-            'id_status_type' => $statusId,
-            'id' => $taskId,
-            'id_user' => $userId
-        ]);
+        $stmt->bindValue(':id_status_type', $statusId);
+        $stmt->bindValue(':id', $taskId);
+        $stmt->bindValue(':id_user', $userId);
+
+        return $stmt->execute();
     }
 
     //Supprime une tâche grâce à son identifiant.
@@ -200,9 +200,9 @@ class TaskManager implements TaskManagerInterface {
 
         $stmt = $this->pdo->prepare($sql);
 
-        return $stmt->execute([
-            'id' => $id
-        ]);
+        $stmt->bindValue(':id', $id);
+
+        return $stmt->execute();
     }
 
     // Récupère tous les statuts disponibles.
