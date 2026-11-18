@@ -38,9 +38,10 @@ class ProjectManager implements ProjectManagerInterface {
         $sql = "SELECT * FROM projects WHERE id = :id";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            'id' => $id
-        ]);
+
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
 
         $row = $stmt->fetch();
 
@@ -64,12 +65,12 @@ class ProjectManager implements ProjectManagerInterface {
 
         $stmt = $this->pdo->prepare($sql);
 
-        return $stmt->execute([
-            'name' => $project->getName(),
-            'description' => $project->getDescription(),
-            'creation_date' => $project->getCreationDate(),
-            'id_status_type' => $project->getIdStatusType()
-        ]);
+        $stmt->bindValue(':name', $project->getName());
+        $stmt->bindValue(':description', $project->getDescription());
+        $stmt->bindValue(':creation_date', $project->getCreationDate());
+        $stmt->bindValue(':id_status_type', $project->getIdStatusType());
+
+        return $stmt->execute();
     }
 
     // Modifie les informations d'un projet.
@@ -87,13 +88,13 @@ class ProjectManager implements ProjectManagerInterface {
 
         $stmt = $this->pdo->prepare($sql);
 
-        return $stmt->execute([
-            'name' => $project->getName(),
-            'description' => $project->getDescription(),
-            'creation_date' => $project->getCreationDate(),
-            'id_status_type' => $project->getIdStatusType(),
-            'id' => $project->getId()
-        ]);
+        $stmt->bindValue(':name',$project->getName());
+        $stmt->bindValue(':description', $project->getDescription());
+        $stmt->bindValue(':creation_date', $project->getCreationDate());
+        $stmt->bindValue(':id_status_type', $project->getIdStatusType());
+        $stmt->bindValue(':id', $project->getId());
+
+        return $stmt->execute();
     }
 
     //Supprime un projet grâce à son identifiant.
@@ -102,9 +103,9 @@ class ProjectManager implements ProjectManagerInterface {
 
         $stmt = $this->pdo->prepare($sql);
 
-        return $stmt->execute([
-            'id' => $id
-        ]);
+        $stmt->bindValue(':id',$id);
+
+        return $stmt->execute();
     }
 
     // Récupère tous les statuts disponibles.
