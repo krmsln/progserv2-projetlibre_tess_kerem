@@ -81,8 +81,9 @@ render('head', ['title' => "TeamBoard - Authentification", 'description' => "Tea
 
 <body>
     <?php
-    // Header : utilisation de la fonction render() afin d'intégrer le contenu du fichier header.
-    render('header', [
+        // Header : utilisation de la fonction render() afin d'intégrer le contenu du fichier header.
+        // true ou false définissent si un lien de navigation vers la page XY est affiché sur la page auth.php.
+        render('header', [
         'showIndex' => true,
         'showDashboard' => false,
         'showProfile' => false,

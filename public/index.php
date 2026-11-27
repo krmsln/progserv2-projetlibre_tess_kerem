@@ -16,6 +16,7 @@ render('head', ['title' => "TeamBoard - Accueil", 'description' => "TeamBoard - 
 
     <?php
     // Header : utilisation de la fonction render() afin d'intégrer le contenu du fichier header.
+    // true ou false définissent si un lien de navigation vers la page XY est affiché sur la page index.php.
     render('header', [
         'showIndex' => false,
         'showDashboard' => isset($_SESSION['user_id']),

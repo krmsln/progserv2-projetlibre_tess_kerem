@@ -117,6 +117,7 @@ render('head', ['title' => "TeamBoard - Nouvelle tâche", 'description' => "Team
 <body>
     <?php
     // Header : utilisation de la fonction render() afin d'intégrer le contenu du fichier header.
+    // true ou false définissent si un lien de navigation vers la page XY est affiché sur la page task.php.
     render('header', [
         'showIndex' => true,
         'showDashboard' => true,

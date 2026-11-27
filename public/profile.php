@@ -63,11 +63,12 @@ render('head', ['title' => "TeamBoard - Mon profil", 'description' => "TeamBoard
 
 <body>
     <?php
-    // Header : utilisation de la fonction render() afin d'intégrer le contenu du fichier header.
-    render('header', [
+        // Header : utilisation de la fonction render() afin d'intégrer le contenu du fichier header.
+        // true ou false définissent si un lien de navigation vers la page XY est affiché sur la page profile.php.
+        render('header', [
         'showIndex' => true,
         'showDashboard' => true,
-        'showProfile' => true,
+        'showProfile' => false,
         'showAuth' => false,
         'showLogout' => true
     ]);

@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../src/autoload.php';
+
 //Pour la réutilisation d'interfaces (fonction render).
 require_once __DIR__ . '/../src/functions.php';
 
@@ -52,9 +53,10 @@ render('head', ['title' => "TeamBoard - Tableau de bord", 'description' => "Team
 <body>
     <?php
     // Header : utilisation de la fonction render() afin d'intégrer le contenu du fichier header.
+    // true ou false définissent si un lien de navigation vers la page XY est affiché sur la page dashboard.php.
     render('header', [
         'showIndex' => true,
-        'showDashboard' => true,
+        'showDashboard' => false,
         'showProfile' => true,
         'showAuth' => false,
         'showLogout' => true

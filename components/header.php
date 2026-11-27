@@ -2,7 +2,7 @@
 en-tête de la page web-->
 
 <?php
-//Valeurs par défautaleurs par défaut
+//Valeurs par défaut
 $showIndex = $showIndex ?? false;
 $showDashboard = $showDashboard ?? false;
 $showProfile = $showProfile ?? false;

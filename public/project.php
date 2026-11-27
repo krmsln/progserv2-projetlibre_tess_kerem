@@ -78,13 +78,14 @@ render('head', ['title' => "TeamBoard - Nouveau projet", 'description' => "TeamB
 <body>
     <?php
     // Header : utilisation de la fonction render() afin d'intégrer le contenu du fichier header.
+    // true ou false définissent si un lien de navigation vers la page XY est affiché sur la page project.php.
     render('header', [
         'showIndex' => true,
         'showDashboard' => true,
         'showProfile' => true,
         'showAuth' => false,
         'showLogout' => true
-    ]);?>
+    ]); ?>
 
     <main>
 
