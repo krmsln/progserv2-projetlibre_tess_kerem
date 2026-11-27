@@ -1,30 +1,30 @@
 <?php
+//Pour la réutilisation d'interfaces (fonction render).
+require_once __DIR__ . '/../src/functions.php';
 session_start();
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TeamBoard - Accueil</title>
-</head>
+<?php
+// Head : utilisation de la fonction render() afin d'afficher le contenu du fichier head.
+render('head', ['title' => "TeamBoard - Accueil", 'description' => "TeamBoard - Votre application web de gestion de projets - Page d'accueil"]);
+?>
 
 <body>
-    <header>
-        <h1>TeamBoard</h1>
-        <nav>
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="dashboard.php">Tableau de bord</a> |
-                <a href="profile.php">Mon profil</a> |
-                <a href="logout.php">Déconnexion</a>
-            <?php else: ?>
-                <a href="auth.php?mode=login">Se connecter</a> |
-                <a href="auth.php?mode=register">Créer un compte</a>
-            <?php endif; ?>
-        </nav>
-    </header>
+
+    <?php
+    // Header : utilisation de la fonction render() afin d'intégrer le contenu du fichier header.
+    // true ou false définissent si un lien de navigation vers la page XY est affiché sur la page index.php.
+    render('header', [
+        'showIndex' => false,
+        'showDashboard' => isset($_SESSION['user_id']),
+        'showProfile' => isset($_SESSION['user_id']),
+        'showAuth' => !isset($_SESSION['user_id']),
+        'showLogout' => isset($_SESSION['user_id'])
+    ]);
+    ?>
 
     <main>
         <section>
@@ -69,9 +69,10 @@ session_start();
         </section>
     </main>
 
-    <footer>
-        <p>Projet réalisé dans le cadre du cours ProgServ2 à la HEIG-VD.</p>
-    </footer>
+    <?php
+    //footer: utilisation de la fonction render() afin d'ajouter  le fichiers footer
+    render('footer'); ?>
+
 </body>
 
 </html>

@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/../src/autoload.php';
+//Pour la réutilisation d'interfaces (fonction render).
+require_once __DIR__ . '/../src/functions.php';
 
 // Seul le manager peut créer une tâche
 SessionManager::requireManager();
@@ -107,22 +109,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TeamBoard - Nouvelle tâche</title>
-</head>
+<?php
+//head: utilisation de la fonction render() afin d'afficher le contenue du fichier head
+render('head', ['title' => "TeamBoard - Nouvelle tâche", 'description' => "TeamBoard - Votre application web de gestion de projets - Nouvelle tâche"]);
+?>
 
 <body>
-    <header>
-        <h1>TeamBoard</h1>
-        <nav>
-            <a href="index.php">Accueil</a> |
-            <a href="dashboard.php">Tableau de bord</a> |
-            <a href="profile.php">Mon profil</a> |
-            <a href="logout.php">Déconnexion</a>
-        </nav>
-    </header>
+    <?php
+    // Header : utilisation de la fonction render() afin d'intégrer le contenu du fichier header.
+    // true ou false définissent si un lien de navigation vers la page XY est affiché sur la page task.php.
+    render('header', [
+        'showIndex' => true,
+        'showDashboard' => true,
+        'showProfile' => true,
+        'showAuth' => false,
+        'showLogout' => true
+    ]);
+    ?>
 
     <main>
         <section>
