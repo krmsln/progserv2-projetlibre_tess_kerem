@@ -9,14 +9,20 @@ session_start();
 
 <?php
 // Head : utilisation de la fonction render() afin d'afficher le contenu du fichier head.
-render('head', ['title' => "TeamBoard - Accueil", 'description' => "TeamBoard - Votre application web de gestion de projets - Page d'accueil"])
+render('head', ['title' => "TeamBoard - Accueil", 'description' => "TeamBoard - Votre application web de gestion de projets - Page d'accueil"]);
 ?>
 
 <body>
 
     <?php
     // Header : utilisation de la fonction render() afin d'intégrer le contenu du fichier header.
-    render('header');
+    render('header', [
+        'showIndex' => false,
+        'showDashboard' => isset($_SESSION['user_id']),
+        'showProfile' => isset($_SESSION['user_id']),
+        'showAuth' => !isset($_SESSION['user_id']),
+        'showLogout' => isset($_SESSION['user_id'])
+    ]);
     ?>
 
     <main>

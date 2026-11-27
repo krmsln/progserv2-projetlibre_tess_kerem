@@ -111,13 +111,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php
 //head: utilisation de la fonction render() afin d'afficher le contenue du fichier head
-render('head', ['title' => "TeamBoard - Nouvelle tâche", 'description' => "TeamBoard - Votre application web de gestion de projets - Nouvelle tâche"])
+render('head', ['title' => "TeamBoard - Nouvelle tâche", 'description' => "TeamBoard - Votre application web de gestion de projets - Nouvelle tâche"]);
 ?>
 
 <body>
     <?php
     // Header : utilisation de la fonction render() afin d'intégrer le contenu du fichier header.
-    render('header');
+    render('header', [
+        'showIndex' => true,
+        'showDashboard' => true,
+        'showProfile' => true,
+        'showAuth' => false,
+        'showLogout' => true
+    ]);
     ?>
 
     <main>

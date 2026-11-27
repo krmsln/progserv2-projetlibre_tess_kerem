@@ -76,13 +76,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php
 //head: utilisation de la fonction render() afin d'afficher le contenue du fichier head
-render('head', ['title' => "TeamBoard - Authentification", 'description' => "TeamBoard - Votre application web de gestion de projets - Authentification"])
+render('head', ['title' => "TeamBoard - Authentification", 'description' => "TeamBoard - Votre application web de gestion de projets - Authentification"]);
 ?>
 
 <body>
     <?php
     // Header : utilisation de la fonction render() afin d'intégrer le contenu du fichier header.
-    render('header');
+    render('header', [
+        'showIndex' => true,
+        'showDashboard' => false,
+        'showProfile' => false,
+        'showAuth' => true,
+        'showLogout' => false
+    ]);
     ?>
 
     <main>
