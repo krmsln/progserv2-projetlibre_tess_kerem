@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/../src/autoload.php';
+//Pour la réutilisation d'interfaces (fonction render).
+require_once __DIR__ . '/../src/functions.php';
 session_start();
 
 if (isset($_SESSION['user_id'])) { //rediriges sur le dahsboard si co
@@ -72,21 +74,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TeamBoard - Authentification</title>
-</head>
+<?php
+//head: utilisation de la fonction render() afin d'afficher le contenue du fichier head
+render('head', ['title' => "TeamBoard - Authentification", 'description' => "TeamBoard - Votre application web de gestion de projets - Authentification"])
+?>
 
 <body>
-    <header>
-        <h1>TeamBoard</h1>
-        <nav>
-            <a href="index.php">Retour à l'accueil</a> |
-            <a href="auth.php?mode=login">Connexion</a> |
-            <a href="auth.php?mode=register">Créer un compte</a>
-        </nav>
-    </header>
+    <?php
+    // Header : utilisation de la fonction render() afin d'intégrer le contenu du fichier header.
+    render('header');
+    ?>
 
     <main>
         <?php if (!empty($error)): ?>

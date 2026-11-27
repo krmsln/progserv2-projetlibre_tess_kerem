@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/../src/autoload.php';
+//Pour la réutilisation d'interfaces (fonction render).
+require_once __DIR__ . '/../src/functions.php';
 
 // Bloque les utilisateurs non connectés
 SessionManager::requireLogin();
@@ -42,22 +44,16 @@ if ($isManager) {
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TeamBoard - Tableau de bord</title>
-</head>
+<?php
+//head: utilisation de la fonction render() afin d'afficher le contenue du fichier head
+render('head', ['title' => "TeamBoard - Tableau de bord", 'description' => "TeamBoard - Votre application web de gestion de projets - Tableau de bord"])
+?>
 
 <body>
-    <header>
-        <h1>TeamBoard</h1>
-        <nav>
-            <a href="index.php">Accueil</a> |
-            <a href="dashboard.php">Tableau de bord</a> |
-            <a href="profile.php">Mon profil</a> |
-            <a href="logout.php">Déconnexion</a>
-        </nav>
-    </header>
+    <?php
+    // Header : utilisation de la fonction render() afin d'intégrer le contenu du fichier header.
+    render('header');
+    ?>
 
     <main>
 
